@@ -16,11 +16,11 @@ long long memo[MAX][n];
 
 long long DP(int m, int i){
     if (i == n || m < 0)  return 0;
-    if (memo[m][i] != -1){return memo[m][i];}
+    if (memo[m][i] != -1) return memo[m][i];
     if ( m == 0) return memo[0][i] = 1;
 
     long long res;
-    res = DP(m-coins[i], i) + DP(m, i+1);
+    res = DP(m-coins[i], i) + DP(m, i+1); // Add at least one coin of that type or not add anyone.
     return memo[m][i] = res;
 }
 
