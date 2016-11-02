@@ -33,7 +33,6 @@ int main() {
         for (int i=0; i<k; i++) {
             positions += bin[bin.size()-arr[i]-1];
         }
-
         sort(positions.begin(), positions.end());
         string modified;
         ll maxx = 0, curr;
@@ -43,14 +42,11 @@ int main() {
             for (int i=0; i<k; i++) {
                 modified[59 - arr[i]] = positions[i];
             }
-
             if (isDivisible(modified, 7)) {
-                curr = stoll(modified, NULL, 2);
-                if (curr > maxx) {
-                    maxx = curr;
-                }
+                maxx = stoll(modified, NULL, 2);
+                break;
             }
-        } while( next_permutation(positions.begin(), positions.end()) );
+        } while( prev_permutation(positions.rbegin(), positions.rend()) );
         cout << maxx << "\n";
     }
     return 0;
