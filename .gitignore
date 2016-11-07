@@ -4,3 +4,4 @@ obj/
 *.cbp
 *.layout
 *.depend
+CMakeLists.txt
