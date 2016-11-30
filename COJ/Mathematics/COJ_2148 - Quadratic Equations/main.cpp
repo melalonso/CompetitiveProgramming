@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// ACC
+
 int main()
 {
     int n, a, b, c, res;

@@ -40,37 +40,6 @@ void DFS_aux(int u, int level, int parent)
 }
 
 
-/*
-void DFS_aux(int o) {
-    stack<int> s;
-    found = false;
-    s.push(o);
-    cnt = 0;
-    int u, v, prev;
-    while (s.size()) {
-        u = s.top(); s.pop();
-        visited[u] = true;
-        //cout << "Estoy en "<<u<<endl;
-        cnt++;
-        for (int j = 0; j < graph[u].size(); j++) {
-            v = graph[u][j];
-            if (!visited[v]) {
-                father[v] = u;
-                //cout << "Desde "<<u<<" meto "<<v<<endl;
-                s.push(v);
-            } else if(v != father[u]){
-                found = true;
-                break;
-            }
-        }
-        if (found) {
-            break;
-        }
-    }
-    //cout << "======================\n";
-}
-*/
-
 void DFS() {
     for (int i = 0; i < n; i++) {
         if (!visited[i]) {
