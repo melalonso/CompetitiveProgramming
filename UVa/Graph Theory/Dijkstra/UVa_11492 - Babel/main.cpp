@@ -3,25 +3,21 @@
 #define INF 252645135
 using namespace std;
 
-struct edge {
-    int to, weight, ini_char;
-    edge() {};
-    edge(int to, int w, int ini) : to(to), weight(w), ini_char(ini) {};
-    bool operator<(const edge &E) const {
-        return weight > E.weight;
-    }
-};
+// ACC
 
-vector<edge> graph[4005];
+typedef pair<int, int> ii;
+typedef pair<int, ii> iii;
+
+vector<iii> graph[4005];
 map<string, int> map1;
 string o, d;
 int n;
 
 void addEdge(int u, int v, string w) {
-    int ssize = w.size();
+    int ssize = (int) w.size();
     int initial = w[0] - 'a';
-    graph[u].push_back(edge(v, ssize, initial));
-    graph[v].push_back(edge(u, ssize, initial));
+    graph[u].push_back({v, {ssize, initial}});
+    graph[v].push_back({u, {ssize, initial}});
 }
 
 int dijkstra(int o, int d) {
@@ -29,19 +25,21 @@ int dijkstra(int o, int d) {
     memset(distance, 9999, sizeof distance);
     fill(distance[o], distance[o] + 28, 0);
 
-    priority_queue<edge> pq;
-    pq.push(edge(o, 0, -1));
-    edge u, v;
+    priority_queue<iii, vector<iii>, greater<iii>> pq;
+    pq.push({0, {o, -1}});
+    ii nodeini;
+    int node, iniU, cost;
+    int v, size, iniV;
     while (!pq.empty()) {
-        u = pq.top();
+        tie(cost, nodeini) = pq.top(), tie(node, iniU) = nodeini;
         pq.pop();
-        if (u.weight > distance[u.to][u.ini_char]) continue;
-        for (int i = 0; i < graph[u.to].size(); i++) {
-            v = graph[u.to][i];
-            if (distance[v.to][v.ini_char] > u.weight + v.weight
-                && u.ini_char != v.ini_char) {
-                distance[v.to][v.ini_char] = u.weight + v.weight;
-                pq.push(edge(v.to, distance[v.to][v.ini_char], v.ini_char));
+        if (cost > distance[node][iniU]) continue;
+        for (int i = 0; i < graph[node].size(); i++) {
+            tie(v, nodeini) = graph[node][i];
+            tie(size, iniV) = nodeini;
+            if (distance[v][iniV] > cost + size && iniU != iniV) {
+                distance[v][iniV] = cost + size;
+                pq.push({distance[v][iniV], {v, iniV} });
             }
         }
     }
