@@ -74,23 +74,14 @@ int process() {
         }
     }
 
-    //cout << "De "<<from<<" -> "<<to<<"\n";
-    //cout << "De "<<i<<","<<j<<" -> "<<xneigh<<","<<yneigh<<"\n";
-
-    //cout << "Tot="<<total<<"\n";
-
     int maxPairs = max_matching();
-    //cout << "MaxMatching="<<maxPairs<<"\n";
-
     return ((total - (2 * maxPairs)) + 1) / 2;
 }
 
 int main() {
 
     ios::sync_with_stdio(0);
-    //cin.tie(0);
-    //freopen("input", "r", stdin);
-
+    cin.tie(0);
     int idx = 1;
     while (cin >> n >> m && (n || m)) {
         LEFT = ((n*m)/2) + 10;
