@@ -1,0 +1,3 @@
+C:/Users/melvinelizondo/CLionProjects/GCD_Queries/cmake-build-debug/CMakeFiles/GCD_Queries.dir
+C:/Users/melvinelizondo/CLionProjects/GCD_Queries/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/melvinelizondo/CLionProjects/GCD_Queries/cmake-build-debug/CMakeFiles/rebuild_cache.dir
